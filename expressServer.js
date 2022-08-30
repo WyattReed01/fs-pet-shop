@@ -55,6 +55,8 @@ app.post('/pets', (req, res) => {
         res.send(petJSON)
         if (!age || !kind || !name) {
             console.log("need all arguements for creating pet...")
+            res.status(400)
+            res.end('Need all arguements')
         } else {
             fs.writeFile('pets.json', petJSON, function (error) {
                 if (error) {
